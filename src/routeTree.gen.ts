@@ -11,6 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AtividadesRouteImport } from './routes/atividades'
+import { Route as ConfiguracoesRouteImport } from './routes/configuracoes'
+import { Route as CronometroRouteImport } from './routes/cronometro'
+import { Route as HistoricoRouteImport } from './routes/historico'
+import { Route as RelatoriosRouteImport } from './routes/relatorios'
 import { Route as MateriasIndexRouteImport } from './routes/materias.index'
 import { Route as MateriasIdRouteImport } from './routes/materias.$id'
 
@@ -22,6 +26,26 @@ const IndexRoute = IndexRouteImport.update({
 const AtividadesRoute = AtividadesRouteImport.update({
   id: '/atividades',
   path: '/atividades',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConfiguracoesRoute = ConfiguracoesRouteImport.update({
+  id: '/configuracoes',
+  path: '/configuracoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CronometroRoute = CronometroRouteImport.update({
+  id: '/cronometro',
+  path: '/cronometro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoricoRoute = HistoricoRouteImport.update({
+  id: '/historico',
+  path: '/historico',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RelatoriosRoute = RelatoriosRouteImport.update({
+  id: '/relatorios',
+  path: '/relatorios',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MateriasIndexRoute = MateriasIndexRouteImport.update({
@@ -38,12 +62,20 @@ const MateriasIdRoute = MateriasIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/atividades': typeof AtividadesRoute
+  '/configuracoes': typeof ConfiguracoesRoute
+  '/cronometro': typeof CronometroRoute
+  '/historico': typeof HistoricoRoute
+  '/relatorios': typeof RelatoriosRoute
   '/materias/$id': typeof MateriasIdRoute
   '/materias/': typeof MateriasIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/atividades': typeof AtividadesRoute
+  '/configuracoes': typeof ConfiguracoesRoute
+  '/cronometro': typeof CronometroRoute
+  '/historico': typeof HistoricoRoute
+  '/relatorios': typeof RelatoriosRoute
   '/materias/$id': typeof MateriasIdRoute
   '/materias': typeof MateriasIndexRoute
 }
@@ -51,20 +83,53 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/atividades': typeof AtividadesRoute
+  '/configuracoes': typeof ConfiguracoesRoute
+  '/cronometro': typeof CronometroRoute
+  '/historico': typeof HistoricoRoute
+  '/relatorios': typeof RelatoriosRoute
   '/materias/$id': typeof MateriasIdRoute
   '/materias/': typeof MateriasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/atividades' | '/materias/$id' | '/materias/'
+  fullPaths:
+    | '/'
+    | '/atividades'
+    | '/configuracoes'
+    | '/cronometro'
+    | '/historico'
+    | '/relatorios'
+    | '/materias/$id'
+    | '/materias/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/atividades' | '/materias/$id' | '/materias'
-  id: '__root__' | '/' | '/atividades' | '/materias/$id' | '/materias/'
+  to:
+    | '/'
+    | '/atividades'
+    | '/configuracoes'
+    | '/cronometro'
+    | '/historico'
+    | '/relatorios'
+    | '/materias/$id'
+    | '/materias'
+  id:
+    | '__root__'
+    | '/'
+    | '/atividades'
+    | '/configuracoes'
+    | '/cronometro'
+    | '/historico'
+    | '/relatorios'
+    | '/materias/$id'
+    | '/materias/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AtividadesRoute: typeof AtividadesRoute
+  ConfiguracoesRoute: typeof ConfiguracoesRoute
+  CronometroRoute: typeof CronometroRoute
+  HistoricoRoute: typeof HistoricoRoute
+  RelatoriosRoute: typeof RelatoriosRoute
   MateriasIdRoute: typeof MateriasIdRoute
   MateriasIndexRoute: typeof MateriasIndexRoute
 }
@@ -83,6 +148,34 @@ declare module '@tanstack/react-router' {
       path: '/atividades'
       fullPath: '/atividades'
       preLoaderRoute: typeof AtividadesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/configuracoes': {
+      id: '/configuracoes'
+      path: '/configuracoes'
+      fullPath: '/configuracoes'
+      preLoaderRoute: typeof ConfiguracoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cronometro': {
+      id: '/cronometro'
+      path: '/cronometro'
+      fullPath: '/cronometro'
+      preLoaderRoute: typeof CronometroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/historico': {
+      id: '/historico'
+      path: '/historico'
+      fullPath: '/historico'
+      preLoaderRoute: typeof HistoricoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/relatorios': {
+      id: '/relatorios'
+      path: '/relatorios'
+      fullPath: '/relatorios'
+      preLoaderRoute: typeof RelatoriosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/materias/': {
@@ -105,6 +198,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AtividadesRoute: AtividadesRoute,
+  ConfiguracoesRoute: ConfiguracoesRoute,
+  CronometroRoute: CronometroRoute,
+  HistoricoRoute: HistoricoRoute,
+  RelatoriosRoute: RelatoriosRoute,
   MateriasIdRoute: MateriasIdRoute,
   MateriasIndexRoute: MateriasIndexRoute,
 }
